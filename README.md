@@ -22,7 +22,3 @@ Open [the health check](http://127.0.0.1:8000/healthz/). On macOS or Linux, use 
 ```
 
 To run the same style checks as CI, install `requirements-dev.txt`, then run `python -m ruff check .` and `python -m ruff format --check .` using the virtual environment's Python.
-
-## AI tools used
-
-ChatGPT (Codex) helped review the brief and research references, find and compare official engineering documentation, and draft the Day 1 starter and tests.

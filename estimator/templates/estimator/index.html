@@ -1,0 +1,66 @@
+{% extends "estimator/base.html" %}
+
+{% block content %}
+<div class="nav nav-tabs" role="tablist" aria-label="Assignment information">
+  <button type="button" class="nav-link active" id="cost-tab" data-bs-toggle="tab"
+          data-bs-target="#cost" role="tab" aria-controls="cost" aria-selected="true">
+    Cost estimate
+  </button>
+  <button type="button" class="nav-link" id="immigration-tab" data-bs-toggle="tab"
+          data-bs-target="#immigration" role="tab" aria-controls="immigration"
+          aria-selected="false" tabindex="-1">
+    Immigration
+  </button>
+</div>
+<div class="tab-content bg-body border border-top-0 rounded-bottom">
+  <section class="tab-pane show active p-3 p-md-4" id="cost" role="tabpanel"
+           aria-labelledby="cost-tab" tabindex="0">
+    <h2 class="h5">Home pay preview</h2>
+    <p class="text-body-secondary">Convert one year of gross salary and bonus to pounds.</p>
+    {% if form.errors %}
+      <p class="text-danger" role="alert">Check the fields below.</p>
+    {% endif %}
+    <form action="{% url 'estimator:index' %}" method="post">
+      {% csrf_token %}
+      <div class="row g-3 mb-3">
+        {% for field in form %}
+          <div class="col-sm-6">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+              <div class="form-text" id="{{ field.auto_id }}_helptext">{{ field.help_text }}</div>
+            {% endif %}
+            {% if field.errors %}
+              <div class="text-danger">{{ field.errors }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-primary">Convert home pay</button>
+    </form>
+    {% if gross_home_pay %}
+      <dl class="border-top mt-4 pt-3 mb-0">
+        <dt>Annual gross home pay</dt>
+        <dd class="h4 mb-0">£{{ gross_home_pay }}</dd>
+      </dl>
+    {% endif %}
+    <details class="mt-4">
+      <summary>Official tax and social security guidance</summary>
+      <ul class="mt-2 mb-0">
+        {% for label, url in cost_guidance %}
+          <li><a href="{{ url }}">{{ label }}</a></li>
+        {% endfor %}
+      </ul>
+    </details>
+  </section>
+  <section class="tab-pane p-3 p-md-4" id="immigration" role="tabpanel"
+           aria-labelledby="immigration-tab" tabindex="0">
+    <h2 class="h5">Official immigration guidance</h2>
+    <ul class="mb-0">
+      {% for label, url in immigration_guidance %}
+        <li><a href="{{ url }}">{{ label }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock %}

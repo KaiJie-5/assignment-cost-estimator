@@ -5,6 +5,7 @@ from . import views
 app_name = "estimator"
 
 urlpatterns = [
+    path("", views.index, name="index"),
     path("healthz/", views.health, name="health"),
     path("api/home-pay/", views.home_pay, name="home_pay"),
 ]

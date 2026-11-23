@@ -21,7 +21,7 @@ def cost_report(estimate: AssignmentCost) -> dict:
     }
 
 
-def _summary(label, total, gross_pay):
+def _summary(label: str, total: Decimal, gross_pay: Decimal) -> dict:
     multiple = (
         (total / gross_pay).quantize(Decimal("0.0001"), rounding=ROUND_HALF_UP)
         if gross_pay
@@ -34,7 +34,13 @@ def _summary(label, total, gross_pay):
     }
 
 
-def _row(label, year_one, year_two, *references, currency="GBP"):
+def _row(
+    label: str,
+    year_one: Decimal,
+    year_two: Decimal,
+    *references: tuple[str, str],
+    currency: str = "GBP",
+) -> dict:
     return {
         "label": label,
         "year_one": round_money(year_one),
@@ -45,7 +51,13 @@ def _row(label, year_one, year_two, *references, currency="GBP"):
     }
 
 
-def _benefit_row(label, one: Benefit, two: Benefit, taxable_label, *references):
+def _benefit_row(
+    label: str,
+    one: Benefit,
+    two: Benefit,
+    taxable_label: str,
+    *references: tuple[str, str],
+) -> dict:
     row = _row(label, one.cost_gbp, two.cost_gbp, *references)
     exempt = one.cost_gbp - one.taxable_gbp
     split = bool(one.taxable_gbp and exempt)
@@ -68,7 +80,7 @@ def _benefit_row(label, one: Benefit, two: Benefit, taxable_label, *references):
     return row
 
 
-def _cost_sections(estimate):
+def _cost_sections(estimate: AssignmentCost) -> tuple[dict, ...]:
     one, two = estimate.year_one, estimate.year_two
     fx = estimate.chf_per_gbp
     salary, bonus = estimate.salary_chf / fx, estimate.bonus_chf / fx
@@ -183,7 +195,7 @@ def _cost_sections(estimate):
     )
 
 
-def _workings(estimate):
+def _workings(estimate: AssignmentCost) -> tuple[dict, ...]:
     one, two = estimate.year_one, estimate.year_two
     home = estimate.home_deductions
     return (
@@ -273,7 +285,7 @@ def _workings(estimate):
     )
 
 
-def _assumptions(housing_relief):
+def _assumptions(housing_relief: bool):
     rent_treatment = (
         "The London rent qualifies for UK temporary-workplace relief. The full rent still counts as an employer cost and in Swiss assessable pay."
         if housing_relief
@@ -319,5 +331,9 @@ def _assumptions(housing_relief):
         (
             "The SVA administration fee is modelled at 1.00% of the combined employee and employer AHV/IV/EO contributions. This assumes timely AHVeasy filing and an employer-wide contribution band of CHF 22,500 to under CHF 50,000.",
             (sources.SWISS_CONTRIBUTIONS, sources.SWISS_ADMIN),
+        ),
+        (
+            "The total covers the pay, benefits, tax and social charges shown. Employer pension, accident insurance and immigration costs would need separate amounts.",
+            (),
         ),
     )

@@ -1,0 +1,135 @@
+<section class="mt-4" id="estimate-result" aria-labelledby="estimate-heading">
+  <h2 class="h5" id="estimate-heading">Employer cost</h2>
+  <div class="row g-3 mb-3">
+    {% for period in report.summary.values %}
+      <div class="col-md-4">
+        <div class="card h-100{% if forloop.last %} border-primary bg-primary-subtle{% endif %}">
+          <div class="card-body">
+            <h3 class="h6">{{ period.label }}</h3>
+            <p class="h4 mb-1 text-break">£{{ period.cost_gbp|floatformat:"2g" }}</p>
+            {% if period.home_pay_multiple != None %}
+              <p class="small text-body-secondary mb-0">{{ period.home_pay_multiple|floatformat:4 }}× gross home pay</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <p class="d-md-none small text-body-secondary mb-2">Scroll the table to see all columns.</p>
+  <div class="card mb-4">
+    <div class="table-responsive" tabindex="0" role="region" aria-label="Employer cost breakdown">
+      <table class="table caption-top align-middle mb-0">
+        <caption class="px-3">Costs in GBP. Totals use values before rounding.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Cost item</th>
+            <th scope="col" class="text-end text-nowrap">Year 1</th>
+            <th scope="col" class="text-end text-nowrap">Year 2</th>
+            <th scope="col" class="text-end text-nowrap">Both years</th>
+          </tr>
+        </thead>
+        {% for section in report.sections %}
+          <tbody>
+            <tr class="table-light"><th scope="rowgroup" colspan="4">{{ section.label }}</th></tr>
+            {% for row in section.rows %}
+              <tr>
+                <th scope="row" class="fw-normal">
+                  {{ row.label }}
+                  {% if row.treatments %}
+                    <div class="d-flex flex-wrap gap-1 mt-1">
+                      {% for treatment in row.treatments %}
+                        <span class="badge text-bg-secondary text-wrap text-start">
+                          {{ treatment.label }}{% if treatment.amount_gbp != None %} · £{{ treatment.amount_gbp|floatformat:"2g" }}{% endif %}
+                        </span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  {% include "estimator/source_links.html" with references=row.sources only %}
+                </th>
+                <td class="text-end text-nowrap">{{ row.year_one|floatformat:"2g" }}</td>
+                <td class="text-end text-nowrap">{{ row.year_two|floatformat:"2g" }}</td>
+                <td class="text-end text-nowrap">{{ row.total|floatformat:"2g" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        {% endfor %}
+        <tfoot class="table-light">
+          <tr>
+            <th scope="row">Total employer cost</th>
+            {% for period in report.summary.values %}
+              <td class="fw-semibold text-end text-nowrap">{{ period.cost_gbp|floatformat:"2g" }}</td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <th scope="row">Cost as a multiple of gross home pay</th>
+            {% for period in report.summary.values %}
+              <td class="text-end text-nowrap">
+                {% if period.home_pay_multiple == None %}—{% else %}{{ period.home_pay_multiple|floatformat:4 }}×{% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="accordion" id="estimate-details">
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#estimate-workings" aria-expanded="false" aria-controls="estimate-workings">
+          Calculation workings
+        </button>
+      </h3>
+      <div class="accordion-collapse collapse" id="estimate-workings">
+        <div class="accordion-body">
+          <p>Start with net home pay and add UK-taxable benefits. Recalculate UK income tax on that amount plus the employer-paid tax until the tax bill stabilises.</p>
+          <div class="table-responsive" tabindex="0" role="region" aria-label="Calculation workings table">
+            <table class="table table-sm mb-0">
+              <thead>
+                <tr>
+                  <th scope="col">Calculation</th>
+                  <th scope="col" class="text-end text-nowrap">Year 1</th>
+                  <th scope="col" class="text-end text-nowrap">Year 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in report.workings %}
+                  <tr>
+                    <th scope="row" class="fw-normal">
+                      {{ row.label }}
+                      {% include "estimator/source_links.html" with references=row.sources only %}
+                    </th>
+                    <td class="text-end text-nowrap">{{ row.currency }} {{ row.year_one|floatformat:"2g" }}</td>
+                    <td class="text-end text-nowrap">{{ row.currency }} {{ row.year_two|floatformat:"2g" }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h3 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#estimate-assumptions" aria-expanded="false" aria-controls="estimate-assumptions">
+          Assumptions and sources
+        </button>
+      </h3>
+      <div class="accordion-collapse collapse" id="estimate-assumptions">
+        <div class="accordion-body">
+          <ul class="mb-0 ps-3">
+            {% for text, references in report.assumptions %}
+              <li class="mb-2">
+                {{ text }}
+                {% include "estimator/source_links.html" with references=references only %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

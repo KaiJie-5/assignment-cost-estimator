@@ -1,0 +1,7 @@
+{% if references %}
+  <div class="small mt-1">
+    {% for label, url in references %}
+      <a href="{{ url }}" class="link-secondary">{{ label }}</a>{% if not forloop.last %} · {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

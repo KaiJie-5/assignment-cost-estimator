@@ -11,24 +11,27 @@ from django.views.decorators.http import (
 
 from .cost_report import cost_report
 from .forms import CostEstimateForm, HomePayForm
-from .sources import COST_GUIDANCE, IMMIGRATION_GUIDANCE
+from .sources import IMMIGRATION_GUIDANCE, UK_WORKPLACE_RELIEF
 
 
 @require_http_methods(["GET", "POST"])
 def index(request):
-    form = HomePayForm(request.POST if request.method == "POST" else None)
-    gross_home_pay = None
+    form = CostEstimateForm(request.POST if request.method == "POST" else None)
+    report = None
     status = 200
     if form.is_bound:
         if form.is_valid():
-            gross_home_pay = f"{form.home_pay_gbp():,.2f}"
+            report = cost_report(form.estimate())
         else:
             status = 400
+            for field in form:
+                if field.errors:
+                    field.field.widget.attrs["class"] += " is-invalid"
 
     context = {
         "form": form,
-        "gross_home_pay": gross_home_pay,
-        "cost_guidance": COST_GUIDANCE,
+        "report": report,
+        "housing_relief_source": UK_WORKPLACE_RELIEF,
         "immigration_guidance": IMMIGRATION_GUIDANCE,
     }
     return render(request, "estimator/index.html", context, status=status)

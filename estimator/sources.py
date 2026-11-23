@@ -76,14 +76,6 @@ SWISS_WAGE = (
     "https://sozialversicherungen.admin.ch/de/d/6944/download?version=22",
 )
 
-COST_GUIDANCE = (
-    UK_TAX,
-    UK_GROSS_UP,
-    SWISS_CALCULATOR,
-    SWISS_CONTRIBUTIONS,
-    SWISS_POSTING,
-)
-
 IMMIGRATION_GUIDANCE = (
     (
         "Senior or Specialist Worker visa",

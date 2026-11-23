@@ -1,6 +1,6 @@
 # Assignment cost estimator
 
-A Django tool for a two-year assignment from Switzerland to the UK. Day 1 provides a local Django server and an automated health check.
+A Django tool that estimates the employer's cost of a two-year assignment from Zurich to London.
 
 ## Run locally
 
@@ -12,7 +12,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe manage.py runserver
 ```
 
-Open [the health check](http://127.0.0.1:8000/healthz/). On macOS or Linux, use `python3.12` to create the environment and `.venv/bin/python` for the commands that follow.
+Open [the estimator](http://127.0.0.1:8000/), select **Load Pack Test Case**, then select **Calculate cost**. The two-year estimate is £556,517.92 under the assumptions listed below the result.
+
+On macOS or Linux, use `python3.12` to create the environment and `.venv/bin/python` for the commands that follow.
 
 ## Run checks
 

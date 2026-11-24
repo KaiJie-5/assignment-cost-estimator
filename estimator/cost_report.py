@@ -287,17 +287,21 @@ def _workings(estimate: AssignmentCost) -> tuple[dict, ...]:
 
 def _assumptions(housing_relief: bool):
     rent_treatment = (
-        "The London rent qualifies for UK temporary-workplace relief. The full rent still counts as an employer cost and in Swiss assessable pay."
+        "The London rent qualifies for UK temporary workplace relief. The employer still pays the full rent "
+        "and includes it in pay for Swiss social security."
         if housing_relief
-        else "London rent is a taxable benefit in kind. The employer holds the lease, pays the rent directly and the rent represents the taxable value."
+        else "London rent is a taxable benefit in kind. The employer holds the lease and pays the rent directly. "
+        "The model uses the rent as the taxable value."
     )
     return (
         (
-            "The employee is a UK tax resident working in London. Both years use 2026/27 English income tax rates. The Personal Allowance reduces by £1 for every £2 over £100,000.",
+            "Both years use 2026/27 income tax rates for England. The employee is a UK tax resident. "
+            "The Personal Allowance falls by £1 for every £2 of adjusted net income above £100,000.",
             (sources.UK_TAX, sources.UK_ALLOWANCE),
         ),
         (
-            "The stay-at-home comparison uses 2026 Swiss rates for a single Zurich resident with no children. It uses the standard work deduction, with no other personal deductions, church tax or occupational pension. Each income tax line is rounded to whole CHF.",
+            "Home tax uses 2026 rates for a single Zurich resident with no children. The model deducts Swiss "
+            "social security and work expenses, assumes no church tax, and rounds each tax to whole francs.",
             (
                 sources.SWISS_FEDERAL_TAX,
                 sources.ZURICH_DEDUCTIONS,
@@ -309,7 +313,8 @@ def _assumptions(housing_relief: bool):
             (sources.UK_WORKPLACE_RELIEF if housing_relief else sources.UK_HOUSING,),
         ),
         (
-            "The Year 1 move and serviced apartment qualify for one £8,000 relocation exemption. Moving costs use the exemption first. The cash allowance is taxable and the serviced apartment is an extra cost.",
+            "The model assumes the move and serviced apartment qualify for one £8,000 relocation exemption. "
+            "Moving costs use it first. The cash allowance is taxable.",
             (
                 sources.UK_RELOCATION_CAP,
                 sources.UK_TEMPORARY_HOUSING,
@@ -317,23 +322,32 @@ def _assumptions(housing_relief: bool):
             ),
         ),
         (
-            "A Swiss certificate of coverage is assumed for the full 24-month posting. Article 14 allows Swiss coverage where the employer normally operates in Switzerland, sends the employee to work on its behalf and the employee does not replace another posted worker. UK employer National Insurance is £0 for the certified period.",
+            "The estimate assumes a Swiss certificate of coverage for both years. Article 14 allows "
+            "Swiss coverage for up to 24 months when the employer normally operates in Switzerland, sends the "
+            "employee to work on its behalf, and the employee does not replace another posted worker. "
+            "UK employer National Insurance is £0 for the period on the certificate.",
             (sources.SWISS_POSTING, sources.UK_NIC),
         ),
         (
-            "Swiss assessable pay assumes gross home pay less hypothetical Swiss income tax, plus the employer-funded UK tax, cash relocation allowance and both types of housing. Documented job-related moving costs are treated as expenses.",
+            "Pay for Swiss contributions starts with gross home pay less the Swiss income tax deduction. "
+            "It includes UK tax paid by the employer, the cash relocation allowance and both housing costs. "
+            "The model treats documented moving costs as expenses.",
             (sources.SWISS_WAGE, sources.SWISS_CONTRIBUTIONS),
         ),
         (
-            "The employer and employee each contribute AHV/IV/EO at 5.30%, plus ALV at 1.10% on earnings up to CHF 148,200. The employer is assumed to use SVA Zürich, with FAK at 1.025% of assessable pay.",
+            "The employer and employee each pay 5.30% for AHV/IV/EO on the full pay. Unemployment insurance "
+            "is 1.10% each on pay up to CHF 148,200. For pay of CHF 2,500 or less from an employer, the model "
+            "assumes the worker does not ask to contribute. The employer uses SVA Zürich's 1.025% family allowance rate.",
             (sources.SWISS_CONTRIBUTIONS,),
         ),
         (
-            "The SVA administration fee is modelled at 1.00% of the combined employee and employer AHV/IV/EO contributions. This assumes timely AHVeasy filing and an employer-wide contribution band of CHF 22,500 to under CHF 50,000.",
+            "The administration fee is 1.00% of the employee and employer AHV/IV/EO payments together. "
+            "The model assumes on-time filing through AHVeasy and total contributions for the employer "
+            "of at least CHF 22,500 and under CHF 50,000.",
             (sources.SWISS_CONTRIBUTIONS, sources.SWISS_ADMIN),
         ),
         (
-            "The total covers the pay, benefits, tax and social charges shown. Employer pension, accident insurance and immigration costs would need separate amounts.",
+            "Employer pension, accident insurance and immigration fees are outside this estimate.",
             (),
         ),
     )

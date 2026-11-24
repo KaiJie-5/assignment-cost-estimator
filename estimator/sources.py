@@ -117,25 +117,18 @@ IMMIGRATION_GUIDANCE = {
         ),
         GBM_RULES,
     ),
-    "overseas_service": (VISA_ELIGIBILITY,),
+    "overseas_service": (VISA_ELIGIBILITY, GBM_RULES),
     "visa_fees": (VISA_FEES,),
     "visit": (
         (
             "UK visits for Swiss citizens",
             "https://www.gov.uk/guidance/visiting-the-uk-as-an-eu-eea-or-swiss-citizen",
         ),
-        ("Who needs an ETA", "https://www.gov.uk/eta"),
-        ETA_APPLICATION,
-    ),
-    "visit_activities": (
         (
             "Permitted business activities",
             "https://www.gov.uk/standard-visitor/visit-on-business",
         ),
-        (
-            "Switching to a work visa",
-            "https://www.gov.uk/senior-specialist-worker-visa/switch-to-this-visa",
-        ),
+        ETA_APPLICATION,
     ),
     "passport": (
         (
@@ -143,23 +136,20 @@ IMMIGRATION_GUIDANCE = {
             "https://www.gov.uk/uk-border-control/before-you-leave-for-the-uk",
         ),
         ETA_APPLICATION,
-    ),
-    "work_documents": (
-        (
-            "Work visa documents",
-            "https://www.gov.uk/senior-specialist-worker-visa/documents-you-need-to-apply",
-        ),
         (
             "Passport details in your UKVI account",
             "https://www.gov.uk/evisa/update-ukvi-account",
         ),
-        (
-            "Travelling with an eVisa",
-            "https://www.gov.uk/guidance/confirm-your-immigration-status-to-your-carrier-before-travelling-to-the-uk",
-        ),
     ),
     "licence": (SPONSOR_LICENCE,),
     "certificate": (SPONSOR_CERTIFICATE,),
+    "work_application": (
+        SPONSOR_CERTIFICATE,
+        (
+            "Work visa documents",
+            "https://www.gov.uk/senior-specialist-worker-visa/documents-you-need-to-apply",
+        ),
+    ),
     "skills_charge": (
         (
             "Immigration Skills Charge",

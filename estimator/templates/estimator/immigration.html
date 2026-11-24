@@ -1,79 +1,69 @@
-<h2 class="h5 mb-1">Immigration for the Zurich to London assignment</h2>
-<p class="text-body-secondary">One Swiss worker on a two-year transfer. Fees checked 24 November 2026.</p>
-
-<div class="card mb-3">
-  <div class="card-body">
-    <h3 class="h6">Work visa and eligibility</h3>
-    <p class="mb-0">
-      The route for this transfer is the <strong>Global Business Mobility Senior or Specialist Worker visa</strong>,
-      provided the role and sponsor qualify. The worker must be at least 18 and already work for the linked group.
-      The UK subsidiary needs a Worker sponsor licence covering this route and must assign a Certificate of
-      Sponsorship (CoS).
-    </p>
-    {% include "estimator/source_links.html" with references=guidance.route only %}
-
-    <ul class="mb-0 mt-3">
-      <li class="mb-2">
-        <strong>Role and pay.</strong> Pay must be at least £52,500 a year or the occupation going rate,
-        whichever is higher. The pack’s CHF 150,000 base salary is about £136,364 at its exchange rate,
-        above the general pay floor. The sponsor still needs to check the eligible occupation code and compare
-        qualifying pay with the going rate for the actual hours.
-        {% include "estimator/source_links.html" with references=guidance.eligibility only %}
-      </li>
-      <li class="mb-2">
-        <strong>Overseas service.</strong> The worker’s three years with the Swiss company meet the 12-month
-        requirement if that service qualifies. The minimum overseas period is waived for qualifying pay of
-        £73,900 or more.
-        {% include "estimator/source_links.html" with references=guidance.overseas_service only %}
-      </li>
-      <li>
-        <strong>Maintenance.</strong> For this application from Switzerland, show £1,270 held for 28 days ending
-        within 31 days of applying, unless an A-rated sponsor certifies maintenance on the CoS.
-        {% include "estimator/source_links.html" with references=guidance.visa_fees only %}
-      </li>
-    </ul>
-  </div>
-</div>
+<h2 class="h5 mb-3">Immigration for the two-year transfer</h2>
 
 <div class="row g-3 mb-4">
-  <div class="col-md-6">
+  <div class="col-lg-4">
     <div class="card h-100">
       <div class="card-body">
-        <h3 class="h6">Business visit before the assignment</h3>
+        <h3 class="h6">Work visa</h3>
         <p class="mb-0">
-          For this business trip, the worker can travel as a Standard Visitor with an <strong>ETA</strong>
-          in place of a visitor visa. The ETA costs <strong>£{{ fees.eta }}</strong>.
-          Allow up to three working days and wait for approval before travel.
-          Travellers who already hold valid UK immigration permission can use that permission.
+          Apply for a <strong>Global Business Mobility Senior or Specialist Worker visa</strong>
+          if the job qualifies. The UK subsidiary needs a licence for this route and must issue
+          a Certificate of Sponsorship (CoS).
         </p>
-        {% include "estimator/source_links.html" with references=guidance.visit only %}
-        <p class="mt-3 mb-0">
-          Use the visit for permitted activities such as meetings or site visits. Return to Switzerland to
-          apply for the work visa and start the UK role once work permission is in force.
-        </p>
-        {% include "estimator/source_links.html" with references=guidance.visit_activities only %}
+        {% include "estimator/source_links.html" with references=guidance.route only %}
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-lg-4">
     <div class="card h-100">
       <div class="card-body">
-        <h3 class="h6">Passport and eVisa</h3>
+        <h3 class="h6">Business visit</h3>
         <p class="mb-0">
-          Use a Swiss passport valid throughout each stay. Travel for the visit with the passport used for
-          the ETA. A replacement passport needs a new ETA if one is still required.
+          For meetings or site visits as a Standard Visitor, a Swiss passport holder normally needs an
+          electronic travel authorisation (ETA) instead of a visa. It costs <strong>£{{ fees.eta }}</strong>.
+          Allow up to three working days for approval before travelling.
+        </p>
+        {% include "estimator/source_links.html" with references=guidance.visit only %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3 class="h6">Passport</h3>
+        <p class="mb-0">
+          Use a Swiss passport valid for the whole stay. Travel with the passport used for the ETA.
+          A replacement passport needs a new ETA. For the assignment, keep your current passport linked
+          to your UK Visas and Immigration account.
         </p>
         {% include "estimator/source_links.html" with references=guidance.passport only %}
-        <p class="mt-3 mb-0">
-          For the work application, provide the passport, CoS reference, and the job and sponsor details.
-          After approval, link the passport you will travel with to your UKVI account and update the account
-          after a renewal.
-        </p>
-        {% include "estimator/source_links.html" with references=guidance.work_documents only %}
       </div>
     </div>
   </div>
 </div>
+
+<section class="mb-4" aria-labelledby="immigration-eligibility">
+  <h3 class="h6" id="immigration-eligibility">Work visa requirements</h3>
+  <ul class="mb-0 ps-3">
+    <li class="mb-2">
+      <strong>Job and pay.</strong> The job must be eligible. Annual pay must meet £52,500 or the rate for the
+      job, whichever is higher. CHF 150,000 is about £136,364 at the pack’s exchange rate. The sponsor must
+      check the job code, hours and pay before assigning the certificate.
+      {% include "estimator/source_links.html" with references=guidance.eligibility only %}
+    </li>
+    <li class="mb-2">
+      <strong>Overseas employment.</strong> The worker must be 18 or older and already employed by the group.
+      Below £73,900 a year, the worker needs 12 months of qualifying work overseas. The pack gives three years
+      with the Swiss company.
+      {% include "estimator/source_links.html" with references=guidance.overseas_service only %}
+    </li>
+    <li>
+      <strong>Money for arrival.</strong> Show £1,270 held for 28 consecutive days. The last day must fall
+      within 31 days of applying. An A-rated sponsor can certify support on the certificate instead.
+      {% include "estimator/source_links.html" with references=guidance.visa_fees only %}
+    </li>
+  </ul>
+</section>
 
 <section class="mb-4">
   <h3 class="h6" id="immigration-worker-fees">Worker fees</h3>
@@ -82,8 +72,8 @@
       <thead>
         <tr>
           <th scope="col">Fee</th>
-          <th scope="col" class="text-end">Exactly two years of permission</th>
-          <th scope="col" class="text-end">Two years plus up to six months</th>
+          <th scope="col" class="text-end">Two years</th>
+          <th scope="col" class="text-end">Over two years, up to 2½</th>
         </tr>
       </thead>
       <tbody>
@@ -114,19 +104,18 @@
     </table>
   </div>
   <p class="mt-2 mb-0">
-    Budget for the higher amount. Permission usually extends 14 days beyond the CoS end date,
-    subject to the route’s stay limits.
-    The application calculates the surcharge from the permission dates at
-    £{{ fees.annual_health_surcharge|floatformat:"0g" }} a year, rounding any partial period up to a six-month block.
+    Budget for £{{ fees.visa_total_with_extra_time|floatformat:"2g" }}. The visa usually ends 14 days after the
+    CoS end date. The health surcharge is £{{ fees.annual_health_surcharge|floatformat:"0g" }} a year and is
+    rounded up in six-month steps based on the visa dates.
   </p>
   {% include "estimator/source_links.html" with references=guidance.health_surcharge only %}
-  <p class="mt-2 mb-0">A qualifying Swiss S1 registered with the NHS Business Services Authority may allow a refund.</p>
+  <p class="mt-2 mb-0">A qualifying Swiss S1 registered with the NHS Business Services Authority can allow a refund.</p>
   {% include "estimator/source_links.html" with references=guidance.health_refund only %}
 </section>
 
 <section class="mb-4">
   <h3 class="h6" id="immigration-sponsor-fees">UK sponsor fees</h3>
-  <p class="mb-2">Assumes a 24-month CoS and that the Immigration Skills Charge applies.</p>
+  <p class="mb-2">The estimate assumes a two-year certificate and that the Immigration Skills Charge applies.</p>
   <div class="table-responsive" role="region" aria-labelledby="immigration-sponsor-fees" tabindex="0">
     <table class="table table-sm align-middle mb-0">
       <thead>
@@ -164,12 +153,12 @@
       </tbody>
       <tfoot class="table-light">
         <tr>
-          <th scope="row">Total with a licence covering this route</th>
+          <th scope="row">Total with a licence for this route</th>
           <td class="text-end text-nowrap">£{{ fees.small.existing_licence_total|floatformat:"0g" }}</td>
           <td class="text-end text-nowrap">£{{ fees.large.existing_licence_total|floatformat:"0g" }}</td>
         </tr>
         <tr>
-          <th scope="row">Total with a new Worker licence</th>
+          <th scope="row">Total with a new licence</th>
           <td class="text-end text-nowrap">£{{ fees.small.new_licence_total|floatformat:"0g" }}</td>
           <td class="text-end text-nowrap">£{{ fees.large.new_licence_total|floatformat:"0g" }}</td>
         </tr>
@@ -177,7 +166,7 @@
     </table>
   </div>
   <p class="small text-body-secondary mt-2 mb-0">
-    Add the worker fees above if the company covers them. Priority fees and the separate visit ETA are additional.
+    Add the worker fees if the employer pays them. The ETA and optional priority fees are extra.
   </p>
 </section>
 
@@ -186,45 +175,45 @@
   <dl class="mb-0">
     <dt>New Worker sponsor licence</dt>
     <dd class="mb-2">
-      Most applications take less than eight weeks. For a new licence and then a standard work visa,
-      budget about 11 weeks for the two decisions, plus time for documents, appointments and any extra checks.
-      Licence priority is £750 for a decision within ten working days if available.
+      Most take less than eight weeks. If available, priority costs £750 for a decision within ten working days.
       {% include "estimator/source_links.html" with references=guidance.licence only %}
     </dd>
-    <dt>Certificate allocation</dt>
+    <dt>Extra certificates</dt>
     <dd class="mb-2">
-      A sponsor with the correct licence can assign a CoS from its allocation. If it needs more certificates,
-      the request usually takes up to 12 weeks.
+      If the sponsor needs more certificates, the request usually takes up to 12 weeks.
       {% include "estimator/source_links.html" with references=guidance.certificate only %}
     </dd>
-    <dt>Work visa application from Switzerland</dt>
+    <dt>Work visa from Switzerland</dt>
     <dd class="mb-0">
-      Usually three weeks after the worker has applied, proved their identity and sent the documents.
-      If offered, £500 priority usually brings the decision within five working days.
+      Usually three weeks after the worker applies, proves their identity and sends the documents. If offered,
+      priority costs £500 and usually takes up to five working days.
       {% include "estimator/source_links.html" with references=guidance.visa_timing only %}
     </dd>
   </dl>
+  <p class="small text-body-secondary mt-2 mb-0">
+    Allow about 11 weeks for a new licence followed by a standard visa. Leave extra time for any appointments
+    or extra certificates.
+  </p>
 </section>
 
 <section aria-labelledby="immigration-employer-steps">
   <h3 class="h6" id="immigration-employer-steps">Employer steps</h3>
   <ol class="mb-0">
     <li class="mb-2">
-      <strong>Confirm the transfer.</strong> Document the group link, overseas employment, UK job code and pay.
-      Check that the subsidiary’s licence covers this route. Apply for a licence or add the route if needed.
+      <strong>Check the licence and job.</strong> Confirm the group link, job code and pay. Apply for a licence
+      or add the route if the subsidiary needs it.
       {% include "estimator/source_links.html" with references=guidance.route only %}
     </li>
     <li class="mb-2">
-      <strong>Assign the CoS and pay the sponsor fees.</strong> Give the worker the reference to apply within
-      three months of assignment and at most three months before the job start date. The sponsor pays the
-      certificate fee and any Immigration Skills Charge due.
-      {% include "estimator/source_links.html" with references=guidance.certificate only %}
-      {% include "estimator/source_links.html" with references=guidance.skills_charge only %}
+      <strong>Assign the certificate.</strong> Pay the sponsor fees and give the worker the reference.
+      The worker applies from Switzerland with their passport, certificate reference and job details.
+      Apply within three months of getting the certificate and no more than three months before the job starts.
+      {% include "estimator/source_links.html" with references=guidance.work_application only %}
     </li>
     <li>
-      <strong>Check permission to work before the start date.</strong> Use the worker’s share code and date of
-      birth for the online check, keep the evidence and repeat the check when required. Maintain sponsor
-      records and report relevant changes.
+      <strong>Check right to work before the start date.</strong> Use the worker’s share code and date of birth.
+      Start work only once the work visa is valid. Keep the result, repeat the check when required and report
+      changes as a sponsor.
       {% include "estimator/source_links.html" with references=guidance.right_to_work only %}
     </li>
   </ol>

@@ -75,7 +75,7 @@ def estimate_cost(request):
 def _invalid_fields(form):
     return JsonResponse(
         {
-            "error": "Check the highlighted fields.",
+            "error": "Check the submitted fields.",
             "fields": form.errors.get_json_data(),
         },
         status=400,

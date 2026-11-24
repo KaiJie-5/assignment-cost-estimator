@@ -38,9 +38,9 @@ class ImmigrationTests(SimpleTestCase):
             "£73,900",
             "Standard Visitor",
             'href="https://www.gov.uk/eta/apply"',
-            "Use a Swiss passport valid throughout each stay.",
+            "Use a Swiss passport valid for the whole stay.",
             'href="https://www.gov.uk/evisa/update-ukvi-account"',
-            "Check permission to work before the start date.",
+            "Check right to work before the start date.",
             'href="https://www.gov.uk/check-job-applicant-right-to-work"',
             "Usually three weeks",
         ):

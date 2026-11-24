@@ -2,6 +2,10 @@
 
 A Django tool that estimates the employer's cost of a two-year assignment from Zurich to London.
 
+## Loom video
+
+[Watch the Loom walkthrough](https://www.loom.com/share/99aec92280c444b5b9b2ad606b4603f9)
+
 ## Get the code
 
 ```sh

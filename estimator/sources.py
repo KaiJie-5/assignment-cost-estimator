@@ -76,17 +76,127 @@ SWISS_WAGE = (
     "https://sozialversicherungen.admin.ch/de/d/6944/download?version=22",
 )
 
-IMMIGRATION_GUIDANCE = (
-    (
-        "Senior or Specialist Worker visa",
-        "https://www.gov.uk/senior-specialist-worker-visa",
-    ),
-    (
-        "Visiting the UK on business",
-        "https://www.gov.uk/standard-visitor/visit-on-business",
-    ),
-    (
-        "Passport and border documents",
-        "https://www.gov.uk/uk-border-control/before-you-leave-for-the-uk",
-    ),
+GBM_RULES = (
+    "Global Business Mobility rules",
+    "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-global-business-mobility-routes",
 )
+SPONSOR_LICENCE = (
+    "Sponsor licence application",
+    "https://www.gov.uk/uk-visa-sponsorship-employers/apply-for-your-licence",
+)
+SPONSOR_CERTIFICATE = (
+    "Certificate of Sponsorship",
+    "https://www.gov.uk/uk-visa-sponsorship-employers/certificates-of-sponsorship",
+)
+VISA_FEES = (
+    "Work visa fees and maintenance",
+    "https://www.gov.uk/senior-specialist-worker-visa/how-much-it-costs",
+)
+VISA_ELIGIBILITY = (
+    "Work visa eligibility",
+    "https://www.gov.uk/senior-specialist-worker-visa/eligibility",
+)
+ETA_APPLICATION = ("ETA application", "https://www.gov.uk/eta/apply")
+
+IMMIGRATION_GUIDANCE = {
+    "route": (
+        (
+            "Senior or Specialist Worker visa",
+            "https://www.gov.uk/senior-specialist-worker-visa",
+        ),
+        (
+            "Home Office guide for GBM sponsors",
+            "https://www.gov.uk/government/publications/sponsor-a-global-business-mobility-worker/workers-and-temporary-workers-sponsor-a-global-business-mobility-worker-accessible",
+        ),
+    ),
+    "eligibility": (
+        VISA_ELIGIBILITY,
+        (
+            "Occupation codes and going rates",
+            "https://www.gov.uk/government/publications/global-business-mobility-going-rates-for-eligible-occupations/global-business-mobility-going-rates-for-eligible-occupations",
+        ),
+        GBM_RULES,
+    ),
+    "overseas_service": (VISA_ELIGIBILITY,),
+    "visa_fees": (VISA_FEES,),
+    "visit": (
+        (
+            "UK visits for Swiss citizens",
+            "https://www.gov.uk/guidance/visiting-the-uk-as-an-eu-eea-or-swiss-citizen",
+        ),
+        ("Who needs an ETA", "https://www.gov.uk/eta"),
+        ETA_APPLICATION,
+    ),
+    "visit_activities": (
+        (
+            "Permitted business activities",
+            "https://www.gov.uk/standard-visitor/visit-on-business",
+        ),
+        (
+            "Switching to a work visa",
+            "https://www.gov.uk/senior-specialist-worker-visa/switch-to-this-visa",
+        ),
+    ),
+    "passport": (
+        (
+            "Passport and border documents",
+            "https://www.gov.uk/uk-border-control/before-you-leave-for-the-uk",
+        ),
+        ETA_APPLICATION,
+    ),
+    "work_documents": (
+        (
+            "Work visa documents",
+            "https://www.gov.uk/senior-specialist-worker-visa/documents-you-need-to-apply",
+        ),
+        (
+            "Passport details in your UKVI account",
+            "https://www.gov.uk/evisa/update-ukvi-account",
+        ),
+        (
+            "Travelling with an eVisa",
+            "https://www.gov.uk/guidance/confirm-your-immigration-status-to-your-carrier-before-travelling-to-the-uk",
+        ),
+    ),
+    "licence": (SPONSOR_LICENCE,),
+    "certificate": (SPONSOR_CERTIFICATE,),
+    "skills_charge": (
+        (
+            "Immigration Skills Charge",
+            "https://www.gov.uk/uk-visa-sponsorship-employers/immigration-skills-charge",
+        ),
+    ),
+    "health_surcharge": (
+        (
+            "Health surcharge calculation",
+            "https://www.gov.uk/government/publications/immigration-health-surcharge-caseworker-guidance/immigration-health-surcharge-caseworker-guidance-accessible",
+        ),
+        GBM_RULES,
+    ),
+    "health_refund": (
+        (
+            "Health surcharge refunds",
+            "https://www.gov.uk/healthcare-immigration-application/refunds",
+        ),
+    ),
+    "visa_timing": (
+        (
+            "Applying from outside the UK",
+            "https://www.gov.uk/senior-specialist-worker-visa/apply-from-outside-the-uk",
+        ),
+        (
+            "Priority visa decisions",
+            "https://www.gov.uk/faster-decision-visa-settlement",
+        ),
+    ),
+    "right_to_work": (
+        (
+            "Right-to-work checks",
+            "https://www.gov.uk/check-job-applicant-right-to-work",
+        ),
+        (
+            "Sponsor responsibilities",
+            "https://www.gov.uk/uk-visa-sponsorship-employers/your-responsibilities",
+        ),
+    ),
+}

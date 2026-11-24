@@ -22,12 +22,7 @@
   </section>
   <section class="tab-pane p-3 p-md-4" id="immigration" role="tabpanel"
            aria-labelledby="immigration-tab" tabindex="0">
-    <h2 class="h5">Official immigration guidance</h2>
-    <ul class="mb-0">
-      {% for label, url in immigration_guidance %}
-        <li><a href="{{ url }}">{{ label }}</a></li>
-      {% endfor %}
-    </ul>
+    {% include "estimator/immigration.html" with fees=immigration_fees guidance=immigration_guidance only %}
   </section>
 </div>
 {% endblock %}

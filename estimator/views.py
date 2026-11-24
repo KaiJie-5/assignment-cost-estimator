@@ -11,6 +11,7 @@ from django.views.decorators.http import (
 
 from .cost_report import cost_report
 from .forms import CostEstimateForm, HomePayForm
+from .immigration import IMMIGRATION_FEES
 from .sources import IMMIGRATION_GUIDANCE, UK_WORKPLACE_RELIEF
 
 
@@ -32,6 +33,7 @@ def index(request):
         "form": form,
         "report": report,
         "housing_relief_source": UK_WORKPLACE_RELIEF,
+        "immigration_fees": IMMIGRATION_FEES,
         "immigration_guidance": IMMIGRATION_GUIDANCE,
     }
     return render(request, "estimator/index.html", context, status=status)
